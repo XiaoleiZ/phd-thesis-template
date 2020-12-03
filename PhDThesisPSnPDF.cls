@@ -463,7 +463,7 @@ supported!}
 % ******************************* Bibliography *********************************
 \ifPHD@authoryear
   \ifPHD@biblatex
-    \RequirePackage[backend=biber, style=authoryear, citestyle=alphabetic, 
+    \RequirePackage[backend=biber, style=authoryear, citestyle=nature, 
       sorting=nty, natbib=true]{biblatex}
     \setBiBLaTeXtrue
   \else
