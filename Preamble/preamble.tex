@@ -46,7 +46,7 @@
 
 % ************************* Algorithms and Pseudocode **************************
 
-%\usepackage{algpseudocode}
+\usepackage{algpseudocode}
 
 
 % ********************Captions and Hyperreferencing / URL **********************
@@ -67,7 +67,7 @@
 % Use [H] when including graphics. Note 'H' instead of 'h'
 %\usepackage{float}
 %\restylefloat{figure}
-
+\usepackage{graphicx}
 % Subcaption package is also available in the sty folder you can use that by
 % uncommenting the following line
 % This is for people stuck with older versions of texlive
@@ -85,7 +85,60 @@
 
 % *********************************** SI Units *********************************
 \usepackage{siunitx} % use this package module for SI units
+%\usepackage{cite}
 
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+ \usepackage{amsmath}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\usepackage[colorinlistoftodos]{todonotes}
+ \usepackage{mathtools}
+\newcommand\givenbase[1][]{\:#1\lvert\:}
+\let\given\givenbase
+\newcommand\sgiven{\givenbase[\delimsize]}
+\DeclarePairedDelimiterX\Basics[1](){\let\given\sgiven #1}
+\newcommand{\classname}[1]{\texttt{#1}}
+\newcommand\Average{E\Basics}
+\usepackage{bm}
+\usepackage{commath}
+\usepackage{mathrsfs}
+\usepackage[ruled]{algorithm2e}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{relsize}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{array}
+\usepackage{tgpagella}
+
+
+
+\newcommand{\thesisTitle}{Statistical Methods for Clinical Genome Interpretation with specific application in Inherited Cardiac Conditions}
+\newcommand{\thesisName}{Xiaolei Zhang}
+\newcommand{\thesisSubject}{Documentation}
+\newcommand{\thesisDate}{Dec 2020}
+\newcommand{\thesisVersion}{My First Draft}
+
+\newcommand{\thesisFirstReviewer}{Jane Doe}
+\newcommand{\thesisFirstReviewerUniversity}{\protect{Clean Thesis Style University}}
+\newcommand{\thesisFirstReviewerDepartment}{Department of Clean Thesis Style}
+
+\newcommand{\thesisSecondReviewer}{John Doe}
+\newcommand{\thesisSecondReviewerUniversity}{\protect{Clean Thesis Style University}}
+\newcommand{\thesisSecondReviewerDepartment}{Department of Clean Thesis Style}
+
+\newcommand{\thesisFirstSupervisor}{Dr. James Ware}
+\newcommand{\thesisSecondSupervisor}{John Smith}
+
+\newcommand{\thesisUniversity}{\protect{Clean Thesis Style University}}
+\newcommand{\thesisUniversityDepartment}{Department of Clean Thesis Style}
+\newcommand{\thesisUniversityInstitute}{Institut for Clean Thesis Dev}
+\newcommand{\thesisUniversityGroup}{Clean Thesis Group (CTG)}
+\newcommand{\thesisUniversityCity}{City}
+\newcommand{\thesisUniversityStreetAddress}{Street address}
+\newcommand{\thesisUniversityPostalCode}{Postal Code}
+
+%\renewcommand{\thealgocf}{}
 
 % ******************************* Line Spacing *********************************
 
@@ -112,18 +165,32 @@
 %\usepackage{cleveref} %Referencing without need to explicitly state fig /table
 
 % Add `custombib' in the document class option to use this section
-\ifuseCustomBib
-   \RequirePackage[square, sort, numbers, authoryear]{natbib} % CustomBib
+\ifuseBiblatex
+   %\RequirePackage[square, sort, numbers, unsrtnat]{natbib} % CustomBib
 
 % If you would like to use biblatex for your reference management, as opposed to the default `natbibpackage` pass the option `custombib` in the document class. Comment out the previous line to make sure you don't load the natbib package. Uncomment the following lines and specify the location of references.bib file
 
-%\RequirePackage[backend=biber, style=numeric-comp, citestyle=numeric, sorting=nty, natbib=true]{biblatex}
-%\addbibresource{References/references} %Location of references.bib only for biblatex, Do not omit the .bib extension from the filename.
+ %\RequirePackage[backend=biber, style=numeric-comp, citestyle=numeric, sorting=nty, natbib=true]{biblatex}
+    \addbibresource{References/references}
+%\RequirePackage[backend=biber, style=nature]{biblatex}
+
+%\bibliography{References/references} %Location of references.bib only for biblatex
 
 \fi
 
 % changes the default name `Bibliography` -> `References'
 \renewcommand{\bibname}{References}
+
+
+% ******************************** Roman Pages *********************************
+% The romanpages environment set the page numbering to lowercase roman one
+% for the contents and figures lists. It also resets
+% page-numbering for the remainder of the dissertation (arabic, starting at 1).
+
+\newenvironment{romanpages}{
+  \setcounter{page}{1}
+  \renewcommand{\thepage}{\roman{page}}}
+{\newpage\renewcommand{\thepage}{\arabic{page}}}
 
 
 % ******************************************************************************
@@ -159,7 +226,7 @@
 
 % *********************** Configure Draft Mode **********************************
 
-% Uncomment to disable figures in `draft'
+% Uncomment to disable figures in `draftmode'
 %\setkeys{Gin}{draft=true}  % set draft to false to enable figures in `draft'
 
 % These options are active only during the draft mode
@@ -189,22 +256,3 @@
 %\fi
 
 % Example todo: \mynote{Hey! I have a note}
-
-% ******************************** Highlighting Changes **********************************
-%% Uncomment the following lines to be able to highlight text/modifications.
-%\ifsetDraft
-%  \usepackage{color, soul}
-%  \newcommand{\hlc}[2][yellow]{{\sethlcolor{#1} \hl{#2}}}
-%  \newcommand{\hlfix}[2]{\texthl{#1}\todo{#2}}
-%\else
-%  \newcommand{\hlc}[2]{}
-%  \newcommand{\hlfix}[2]{}
-%\fi
-
-% Example highlight 1: \hlc{Text to be highlighted}
-% Example highlight 2: \hlc[green]{Text to be highlighted in green colour}
-% Example highlight 3: \hlfix{Original Text}{Fixed Text}
-
-% *****************************************************************************
-% ******************* Better enumeration my MB*************
-\usepackage{enumitem}
